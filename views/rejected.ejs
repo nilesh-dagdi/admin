@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rejected Users</title>
+  <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+  <h2>Rejected Users</h2>
+  <% if (students.length === 0) { %>
+    <p>No rejected users yet.</p>
+  <% } else { %>
+    <ul>
+      <% students.forEach(student => { %>
+        <li><%= student.name %> - <%= student.email %></li>
+      <% }); %>
+    </ul>
+  <% } %>
+  <br />
+  <a href="/admin/dashboard">Back to Dashboard</a>
+</body>
+</html>
+

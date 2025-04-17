@@ -1,0 +1,21 @@
+{
+    "name": "student-admin-portal",
+    "version": "1.0.0",
+    "description": "Portal for users to submit student details and admin to accept/reject with email notifications",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "author": "Your Name",
+    "license": "ISC",
+    "dependencies": {
+      "body-parser": "^1.20.2",
+      "dotenv": "^16.4.1",
+      "ejs": "^3.1.9",
+      "express": "^4.18.4",
+      "express-session": "^1.17.3",
+      "mongoose": "^7.6.1",
+      "nodemailer": "^6.9.8"
+    }
+  }
+  

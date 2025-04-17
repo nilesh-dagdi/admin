@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+  <h2>Requested Users</h2>
+  <% if (students.length === 0) { %>
+    <p>No requests.</p>
+  <% } else { %>
+    <ul>
+      <% students.forEach(student => { %>
+        <li>
+          <strong><%= student.name %></strong> - <%= student.email %>
+          <form action="/admin/accept/<%= student._id %>" method="POST" style="display:inline;">
+            <button type="submit">Accept</button>
+          </form>
+          <form action="/admin/reject/<%= student._id %>" method="POST" style="display:inline;">
+            <button type="submit">Reject</button>
+          </form>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+  <br />
+  <a href="/admin/accepted">Accepted Users</a> | 
+  <a href="/admin/rejected">Rejected Users</a>
+</body>
+</html>
