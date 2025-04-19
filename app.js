@@ -10,9 +10,23 @@ const Student = require('./models/Student');
 dotenv.config();
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/adminUserPortal', {
+const dbUrl= process.env.ATLASDB_URL;
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    ssl: true,
+    tlsAllowInvalidCertificates: true
+})
+.then(() => {
+    console.log("✅ MongoDB connected");
+
+    // Start server only after successful DB connection
+    app.listen(3000, () => {
+        console.log('🚀 Server started on http://localhost:3000');
+    });
+})
+.catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
 });
 
 app.use(express.static('public'));
@@ -46,7 +60,7 @@ app.post('/signin', async (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-    res.render('adminLogin');
+    res.render('adminLogin'); 
 });
 
 app.post('/admin', (req, res) => {
@@ -103,6 +117,3 @@ app.get('/admin/rejected', async (req, res) => {
     res.render('rejected', { students });
 });
 
-app.listen(3000, () => {
-    console.log('Server started on http://localhost:3000');
-});

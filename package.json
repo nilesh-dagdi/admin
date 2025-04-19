@@ -1,4 +1,7 @@
 {
+  "engines":{
+    "node":"20.15.1"
+  },
     "name": "student-admin-portal",
     "version": "1.0.0",
     "description": "Portal for users to submit student details and admin to accept/reject with email notifications",
